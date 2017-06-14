@@ -1,8 +1,18 @@
 var app = angular.module('ToyBank', ['ui.router', 'ngAnimate', 'ngTouch', 'ui.bootstrap']);
 
-app.controller('appCtrl', [function () {
-    
+app.controller('appCtrl', ['$profiloService', function ($profiloService) {
+
 }]);
+
+app.factory('$profiloFactory', function (){
+    return{
+        codiceFiscale: null,
+        cognome: null,
+        dataUltimoAccesso: null,
+        indirizzo: null,
+        nome: null
+    };
+});
 
 app.value('baseURL', 'http://localhost:8080');
 
