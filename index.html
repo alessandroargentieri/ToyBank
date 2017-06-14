@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Toy Bank</title>
+    <script src='bower_components/angular/angular.min.js'></script>
+    <script src='bower_components/angular-ui-router/release/angular-ui-router.min.js'></script>
+    <script src='bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js'></script>
+    <script src='bower_components\angular-touch\angular-touch.min.js'></script>
+    <script src='bower_components\angular-animate\angular-animate.min.js'></script>
+    <script src="js/app.js"></script>
+    <script src="login/login.service.js"></script>
+    <script src="login/login.controllers.js"></script>
+    <link rel="stylesheet" type="text/css" href='bower_components/bootstrap/dist/css/bootstrap.min.css' />
+    <link rel="stylesheet" type="text/css" href='\bower_components\angular-bootstrap\ui-bootstrap-csp.css' />
+
+    <meta name="viewport" content="width-device-width, initial-scale=1" />
+
+</head>
+
+<body ng-app="ToyBank">
+    <!--da specificare il tema dark/light-->
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Toy Bank</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
+                <ul class="nav navbar-nav">
+                    <!-- class="active" da inserire per ogni spostamento-->
+                    <li><a href="index.html">Dashbord <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">Movimenti</a></li>
+                    <li><a href="#">Profilo</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="login.html">Log out</a></li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div>
+        <ui-view></ui-view>
+    </div>
+
+</body>
+
+</html>

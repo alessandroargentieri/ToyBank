@@ -1,0 +1,7 @@
+<div ng-controller="LoginCtrl as ctrl">
+    <label for="username">Username: </label>
+    <input type="text" name="username" ng-model="ctrl.username">
+    <label for="password">Password: </label>
+    <input type="password" name="password" ng-model="ctrl.password">
+    <button ng-click="ctrl.login(ctrl.username, ctrl.password)">Login</button>
+</div>
