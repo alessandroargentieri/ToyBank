@@ -3,10 +3,21 @@ var app = angular.module('ToyBank', ['ui.router', 'ngAnimate', 'ngTouch', 'ui.bo
 app.controller('appCtrl', ['$profiloService', '$profiloFactory', function ($profiloService, $profiloFactory) {
     var self = this;
     self.profilo = $profiloFactory;
+
+    $profiloService.profilo().then(function (result) {
+        self.profilo = result.data;
+        $profiloFactory.nome = self.profilo.nome;
+        $profiloFactory.cognome = self.profilo.cognome;
+        $profiloFactory.dataUltimoAccesso = self.profilo.dataUltimoAccesso;
+        $profiloFactory.codiceFiscale = self.profilo.codiceFiscale;
+        $profiloFactory.indirizzo = self.profilo.indirizzo;
+       
+    });
+
 }]);
 
-app.factory('$profiloFactory', function (){
-    return{
+app.factory('$profiloFactory', function () {
+    return {
         codiceFiscale: null,
         cognome: null,
         dataUltimoAccesso: null,
