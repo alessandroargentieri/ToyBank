@@ -1,8 +1,10 @@
 var app = angular.module('ToyBank', ['ui.router', 'ngAnimate', 'ngTouch', 'ui.bootstrap']);
 
-app.controller('appCtrl', ['$profiloService', '$profiloFactory', function ($profiloService, $profiloFactory) {
+app.controller('appCtrl', ['$profiloService','$profiloFactory', function ($profiloService, $profiloFactory) {
+
     var self = this;
-    self.profilo = $profiloFactory;
+    self.profiloUtente = $profiloFactory;
+
 }]);
 
 app.factory('$profiloFactory', function (){
