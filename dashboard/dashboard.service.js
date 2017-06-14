@@ -1,11 +1,11 @@
-app.service('$dashService', ['$http', 'baseUrl', '$scope', function ($http, baseURL, $scope) {
+app.service('$dashService', function ($http, baseURL) {
     this.saldo = function () {
         return $http({
             method:'GET',
             url: baseURL + '/saldo',
-            header: {
-                "X-JWT-Assertion": localStorage.getItem('tokenJwt')
+            headers: {
+                'X-JWT-Assertion': localStorage.getItem('tokenJwt')
             }
         });
     };
-}]);
+});
