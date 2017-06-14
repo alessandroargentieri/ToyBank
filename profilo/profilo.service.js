@@ -4,7 +4,7 @@ app.service('$profiloService', function($http, baseURL){
             method: 'POST',
             url: baseURL +'/profilo',
             headers:{
-                'jwt_header':localStorage.getItem('tokenJwt')
+                'X-JWT-Assertion':localStorage.getItem('tokenJwt')
             }
         });
     };
