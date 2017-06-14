@@ -1,8 +1,8 @@
 <div ng-controller="DashCtrl as ctrl">
    <strong>Saldo contabile: </strong> {{ctrl.saldoResponse.saldoContabile}}
    <strong>Saldo disponibile: </strong> {{ctrl.saldoResponse.saldoDisponibile}}
-   <strong>Ultimo accesso: </strong> {{ctrl.saldoResponse.dataUltimoAggiornamento | date: "dd/mm/yyyy 'at' h:mma"}}
+   <strong>Ultimo accesso: </strong> {{ctrl.saldoResponse.dataUltimoAggiornamento | date: 'medium'}}
    <div>
-       Benvenuto {{"nome"}} {{"cognome"}}
+       Benvenuto {{ctrl.profilo.nome}} {{"cognome"}}
    </div>
 </div>
