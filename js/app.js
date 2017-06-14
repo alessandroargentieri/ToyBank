@@ -1,6 +1,6 @@
 var app = angular.module('ToyBank', ['ui.router', 'ngAnimate', 'ngTouch', 'ui.bootstrap']);
 
-app.controller('appCtrl', ['$profiloService','$profiloFactory', function ($profiloService, $profiloFactory) {
+app.controller('appCtrl', ['$profiloService','$profiloFactory', '$saldoFactory', '$dashService', function ($profiloService, $profiloFactory, $saldoFactory, $dashService) {
 
     var self = this;
     self.profilo = $profiloFactory;
@@ -24,6 +24,14 @@ app.factory('$profiloFactory', function () {
         dataUltimoAccesso: null,
         indirizzo: null,
         nome: null
+    };
+});
+
+app.factory('$saldoFactory', function () {
+    return {
+        saldoContabile: null,
+        saldoDisponibile: null,
+        dataUltimoAccesso: null
     };
 });
 
