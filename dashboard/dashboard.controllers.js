@@ -1,9 +1,9 @@
 app.controller('DashCtrl', ['$dashService', function ($dashService) {
     var self = this;
-    this.getSaldo = function() {
+    self.getSaldo = function() {
         $dashService.saldo().then(function (result){
             self.saldoResponse = result.data;
-            console.log(result);
+            console.log(self.saldoResponse);
         });
     }();
 }]);
