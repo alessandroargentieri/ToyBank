@@ -17,8 +17,6 @@ app.controller('appCtrl', ['$profiloService', '$profiloFactory', function ($prof
         });
     }
 
-
-
 }]);
 
 app.factory('$profiloFactory', function () {
