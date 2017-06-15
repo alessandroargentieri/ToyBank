@@ -1,21 +1,29 @@
 <div ng-controller="MovimentiCtrl as ctrl">
-    saldoContabile: {{ctrl.saldo.saldoContabile}}
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Data</th>
-                <th>Descrizione</th>
-                <th>Importo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="movimento in ctrl.movimenti">
-                <td>{{movimento.id}}</td>
-                <td>{{movimento.importo}}</td>
-                <td>{{movimento.data}}</td>
-                <td>{{movimento.descrizione}}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-10 col-xs-6 col-xs-offset-6">
+             SaldoContabile: <strong>{{ctrl.saldo.saldoContabile}}</strong>  
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <table class="table table-response table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Data</th>
+                        <th>Descrizione</th>
+                        <th>Importo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="movimento in ctrl.movimenti">
+                        <td>{{movimento.id}}</td>
+                        <td>{{movimento.importo}}</td>
+                        <td>{{movimento.data}}</td>
+                        <td>{{movimento.descrizione}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
