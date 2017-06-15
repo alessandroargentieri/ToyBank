@@ -3,9 +3,7 @@ app.service('$movimentiService',function($http,baseURL){
         return $http({
             method:'GET',
             url:baseURL + '/movimenti',
-            headers:{
-                'X-JWT-Assertion':localStorage.getItem('tokenJwt')
-            }
+            
         });
     };
 });

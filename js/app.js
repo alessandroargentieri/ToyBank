@@ -39,7 +39,9 @@ app.factory('$saldoFactory', function () {
 
 app.value('baseURL', 'http://localhost:8080');
 
-app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $httpProvider) {
+
+    $httpProvider.interceptors.push('loadingInterceptor');
 
     $urlRouterProvider.otherwise('/login');
 
@@ -83,3 +85,49 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
         templateUrl: 'bonifico/bonifico.step3.html'
     });
 }]);
+
+app.service('loadingInterceptor', function ($q, $log, $rootScope, baseURL) {
+
+    var xhrCreations = 0;
+    var xhrResolutions = 0;
+
+    function isLoading() {
+        console.log('isLoading', xhrResolutions < xhrCreations)
+        return xhrResolutions < xhrCreations;
+    }
+
+    function updateStatus() {
+        $rootScope.loading = isLoading();
+    }
+
+    return {
+        request: function (config) {
+            if (config.url !== (baseURL + '/security/login')) {
+                config.headers = {
+                    'X-JWT-Assertion': localStorage.getItem('tokenJwt')
+                };
+            }
+
+            xhrCreations++;
+            updateStatus();
+            return config;
+        },
+        requestError: function (rejection) {
+            xhrResolutions++;
+            updateStatus();
+            $log.error('Request error:', rejection);
+            return $q.reject(rejection);
+        },
+        response: function (response) {
+            xhrResolutions++;
+            updateStatus();
+            return response;
+        },
+        responseError: function (rejection) {
+            xhrResolutions++;
+            updateStatus();
+            $log.error('Response error:', rejection);
+            return $q.reject(rejection);
+        }
+    };
+});
