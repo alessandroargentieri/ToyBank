@@ -11,11 +11,7 @@ app.service('$bonificoService', function ($http, baseURL) {
                 "importo": importo,
                 "data": data,
                 "causale": causale
-            },
-            headers: {
-                'X-JWT-Assertion': localStorage.getItem('tokenJwt')
             }
-
         });
     };
 
