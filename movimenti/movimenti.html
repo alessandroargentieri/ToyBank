@@ -3,16 +3,18 @@
     <table>
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Data</th>
                 <th>Descrizione</th>
                 <th>Importo</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+            <tr ng-repeat="movimento in ctrl.movimenti">
+                <td>{{movimento[0].id}}</td>
+                <td>{{movimento[0].importo}}</td>
+                <td>{{movimento[0].data}}</td>
+                <td>{{movimento[0].descrizione}}</td>
             </tr>
         </tbody>
     </table>
