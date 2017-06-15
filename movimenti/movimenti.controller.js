@@ -3,10 +3,11 @@ app.controller('MovimentiCtrl', ['$dashService', '$saldoFactory','$movimentiServ
 
     self.saldo = $saldoFactory;    
     self.movimenti=null;
-    
+
     self.getMovimenti=function(){
         $movimentiService.$movimenti().then(function(result){
-            self.movimenti=result.data;
+            self.movimenti=result.data.movimenti;
+            console.log(self.movimenti);
         });
     }();
     
