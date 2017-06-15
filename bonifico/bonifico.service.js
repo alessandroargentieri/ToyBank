@@ -22,9 +22,6 @@ app.service('$bonificoService', function ($http, baseURL) {
             data: {
                 "otp": otp,
                 "key": key
-            },
-            headers: {
-                'X-JWT-Assertion': localStorage.getItem('tokenJwt')
             }
         });
 
