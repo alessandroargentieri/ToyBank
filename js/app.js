@@ -1,11 +1,13 @@
 var app = angular.module('ToyBank', ['ui.router', 'ngAnimate', 'ngTouch', 'ui.bootstrap']);
 
-app.controller('appCtrl', ['$profiloService', '$profiloFactory', '$saldoFactory', '$dashService', function ($profiloService, $profiloFactory, $saldoFactory, $dashService) {
+app.controller('appCtrl', ['$profiloService', '$profiloFactory', '$saldoFactory', '$dashService', '$appFactory', function ($profiloService, $profiloFactory, $saldoFactory, $dashService, $appFactory) {
 
     var self = this;
+    self.appFactory = $appFactory;
     self.profilo = $profiloFactory;
 
     if (localStorage.getItem('tokenJwt') !== null) {
+        $appFactory.loggato = true;
         $profiloService.profilo().then(function (result) {
             self.profilo = result.data;
             $profiloFactory.nome = self.profilo.nome;
@@ -17,9 +19,9 @@ app.controller('appCtrl', ['$profiloService', '$profiloFactory', '$saldoFactory'
         });
     }
 
-    self.cleanToken = function (){
+    self.cleanToken = function () {
         localStorage.removeItem('tokenJwt');
-        self.isloggedIn = false;
+        $appFactory.loggato = false;
     };
 
 }]);
@@ -31,6 +33,12 @@ app.factory('$profiloFactory', function () {
         dataUltimoAccesso: null,
         indirizzo: null,
         nome: null
+    };
+});
+
+app.factory('$appFactory', function () {
+    return {
+        loggato : false
     };
 });
 

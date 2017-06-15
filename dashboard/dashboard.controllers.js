@@ -2,6 +2,7 @@ app.controller('DashCtrl', ['$dashService', '$profiloFactory', '$saldoFactory', 
     var self = this;
     self.profilo = $profiloFactory;
     console.log(self.profilo);
+
     self.getSaldo = function () {
         $dashService.saldo().then(function (result) {
             self.saldoResponse = result.data;
