@@ -1,9 +1,6 @@
-app.controller('MovimentiCtrl',['$dashService', '$saldoFactory', function($dashService, $saldoFactory){
+app.controller('MovimentiCtrl', ['$dashService', '$saldoFactory', function ($dashService, $saldoFactory) {
+    var self = this;
 
-    $dashService.saldo().then(function (result) {
-                self.saldo = result.data;
-                $saldoFactory.saldoContabile = self.saldo.saldoContabile;
-                $saldoFactory.saldoDisponibile = self.saldo.saldoDisponibile;
-                $saldoFactory.dataUltimoAccesso = self.saldo.dataUltimoAccesso;
-    });
+    self.saldo = $saldoFactory;    
+    
 }]);

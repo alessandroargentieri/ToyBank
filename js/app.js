@@ -5,7 +5,7 @@ app.controller('appCtrl', ['$profiloService','$profiloFactory', '$saldoFactory',
     var self = this;
     self.profilo = $profiloFactory;
 
-    if (localStorage.getItem('tokenJwt') != null) {
+    if (localStorage.getItem('tokenJwt') !== null) {
         $profiloService.profilo().then(function (result) {
             self.profilo = result.data;
             $profiloFactory.nome = self.profilo.nome;
