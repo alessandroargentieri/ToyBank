@@ -55,7 +55,7 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="login.html">Log out</a></li>
+                    <li><a ui-sref="login" ng-click="ctrl.cleanToken()">Log out</a></li>
 
                 </ul>
             </div>
@@ -64,7 +64,7 @@
         <!-- /.container-fluid -->
     </nav>
     
-    <div>
+    <div class="container">
         <ui-view></ui-view>
     </div>
 

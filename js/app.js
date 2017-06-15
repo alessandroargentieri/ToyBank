@@ -17,6 +17,10 @@ app.controller('appCtrl', ['$profiloService', '$profiloFactory', '$saldoFactory'
         });
     }
 
+    self.cleanToken = function (){
+        localStorage.removeItem('tokenJwt');
+    };
+
 }]);
 
 app.factory('$profiloFactory', function () {
@@ -92,7 +96,7 @@ app.service('loadingInterceptor', function ($q, $log, $rootScope, baseURL) {
     var xhrResolutions = 0;
 
     function isLoading() {
-        console.log('isLoading', xhrResolutions < xhrCreations)
+        console.log('isLoading', xhrResolutions < xhrCreations);
         return xhrResolutions < xhrCreations;
     }
 
@@ -103,9 +107,7 @@ app.service('loadingInterceptor', function ($q, $log, $rootScope, baseURL) {
     return {
         request: function (config) {
             if (config.url !== (baseURL + '/security/login')) {
-                config.headers = {
-                    'X-JWT-Assertion': localStorage.getItem('tokenJwt')
-                };
+                config.headers['X-JWT-Assertion'] = localStorage.getItem('tokenJwt');
             }
 
             xhrCreations++;
