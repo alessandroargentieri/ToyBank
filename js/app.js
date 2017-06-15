@@ -1,6 +1,6 @@
 var app = angular.module('ToyBank', ['ui.router', 'ngAnimate', 'ngTouch', 'ui.bootstrap']);
 
-app.controller('appCtrl', ['$profiloService','$profiloFactory', '$saldoFactory', '$dashService', function ($profiloService, $profiloFactory, $saldoFactory, $dashService) {
+app.controller('appCtrl', ['$profiloService', '$profiloFactory', '$saldoFactory', '$dashService', function ($profiloService, $profiloFactory, $saldoFactory, $dashService) {
 
     var self = this;
     self.profilo = $profiloFactory;
@@ -68,4 +68,18 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
         templateUrl: 'bonifico/bonifico.html'
     });
 
+    $stateProvider.state('bonifico.step1', {
+        url: '/step1',
+        templateUrl: 'bonifico/bonifico.step1.html'
+    });
+
+    $stateProvider.state('bonifico.step2', {
+        url: '/step2',
+        templateUrl: 'bonifico/bonifico.step2.html'
+    });
+
+    $stateProvider.state('bonifico.step3', {
+        url: '/step3',
+        templateUrl: 'bonifico/bonifico.step3.html'
+    });
 }]);
