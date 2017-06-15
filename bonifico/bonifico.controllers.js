@@ -15,7 +15,7 @@ app.controller('BonificoCtrl', ['$bonificoService', '$state', function ($bonific
 
     self.confermaBonificoCtrl = function () {
         $bonificoService.confermaBonifico(self.otp, self.key).then(function (result) {
-
+            $state.go('bonifico.step3');
         }).catch(function (error) {
             console.log('errore nella verifica del bonifico', error);
         });
