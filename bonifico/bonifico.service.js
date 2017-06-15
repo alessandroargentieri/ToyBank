@@ -7,7 +7,7 @@ app.service('$bonificoService', function ($http, baseURL) {
             data: {
                 "nome": nome,
                 "cognome": cognome,
-                "iban": iban,
+                "ibanRicevente": iban,
                 "importo": importo,
                 "data": data,
                 "causale": causale
