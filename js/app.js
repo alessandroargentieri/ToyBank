@@ -17,6 +17,10 @@ app.controller('appCtrl', ['$profiloService', '$profiloFactory', '$saldoFactory'
         });
     }
 
+    self.cleanToken = function (){
+        localStorage.removeItem('tokenJwt');
+    };
+
 }]);
 
 app.factory('$profiloFactory', function () {
