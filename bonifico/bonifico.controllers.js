@@ -25,6 +25,6 @@ app.controller('BonificoCtrl', ['$bonificoService', '$state', 'WizardHandler', f
 
     self.changeLabelAndGoNext = function () {
         WizardHandler.wizard().next();
-    }
+    };
 
 }]);
