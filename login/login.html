@@ -1,23 +1,23 @@
 <div ng-controller="LoginCtrl as ctrl">
     <div class="row">
         <div class="col-md-4 col-md-offset-4 col-xs-12">
-        <div class="panel panel-default">
-            <div class="form-group">
-                <div class="panel-header">
-                    <h2>&nbsp;Login</h2>
-                </div>
-                <div class="panel-body">
-                    <label for="username">Username: </label>
-                    <input type="text" name="username" class="form-control" ng-model="ctrl.username">
-                    <label for="password">Password: </label>
-                    <input type="password" name="password" ng-model="ctrl.password" class="form-control"><br />
-                    <div class=row>
-                        <div class="col-md-2 col-md-offset-9">
-                          <button ng-click="ctrl.login(ctrl.username, ctrl.password)" class="btn btn-primary">Login</button>
+            <div class="panel panel-default">
+                <div class="form-group">
+                    <div class="panel-header">
+                        <h2>&nbsp;Login</h2>
+                    </div>
+                    <div class="panel-body">
+                        <label for="username">Username: </label>
+                        <input type="text" name="username" class="form-control" ng-model="ctrl.username">
+                        <label for="password">Password: </label>
+                        <input type="password" name="password" ng-model="ctrl.password" class="form-control"><br />
+                        <div class=row>
+                            <div class="col-md-2 col-md-offset-9">
+                                <button ng-click="ctrl.login(ctrl.username, ctrl.password)" class="btn btn-primary">Login</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
