@@ -1,6 +1,6 @@
 var app = angular.module('ToyBank', ['ui.router', 'ngAnimate', 'ngTouch', 'ui.bootstrap']);
 
-app.controller('appCtrl', ['$rootScope', '$scope', function ($rootScope, $scope) {
+app.controller('appCtrl', ['$rootScope', '$scope', '$appFactory', function ($rootScope, $scope, $appFactory) {
     var self = this;
 
     self.cleanToken = function () {
