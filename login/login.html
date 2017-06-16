@@ -11,7 +11,11 @@
                     <input type="text" name="username" class="form-control" ng-model="ctrl.username">
                     <label for="password">Password: </label>
                     <input type="password" name="password" ng-model="ctrl.password" class="form-control"><br />
-                    <button ng-click="ctrl.login(ctrl.username, ctrl.password)" class="btn btn-primary">Login</button>
+                    <div class=row>
+                        <div class="col-md-2 col-md-offset-9">
+                          <button ng-click="ctrl.login(ctrl.username, ctrl.password)" class="btn btn-primary">Login</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
