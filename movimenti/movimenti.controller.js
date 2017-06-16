@@ -6,7 +6,7 @@ app.controller('MovimentiCtrl', ['$dashService', '$movimentiService', 'orderByFi
 
     self.getSaldo = function () {
         $dashService.saldo().then(function (result) {
-            self.saldo = result.data
+            self.saldo = result.data;
         });
     }();
 
