@@ -1,36 +1,13 @@
 var app = angular.module('ToyBank', ['ui.router', 'ngAnimate', 'ngTouch', 'ui.bootstrap']);
 
-app.controller('appCtrl', ['$profiloService', '$dashService', '$appFactory', function ($profiloService, $dashService, $appFactory) {
-
+app.controller('appCtrl', ['$rootScope', '$scope', function ($rootScope, $scope) {
     var self = this;
-
-    self.profilo = $appFactory.profilo;
-    self.saldo = $appFactory.saldo;
-    self.loggato = $appFactory.loggato;
-
-    if (localStorage.getItem('tokenJwt') !== null) {
-        $appFactory.loggato = true;
-        $profiloService.profilo().then(function (result) {
-            self.profilo = result.data;
-            $appFactory.profilo.nome = self.profilo.nome;
-            $appFactory.profilo.cognome = self.profilo.cognome;
-            $appFactory.profilo.ultimoAccesso = self.profilo.ultimoAccesso;
-            $appFactory.profilo.codiceFiscale = self.profilo.codiceFiscale;
-            $appFactory.profilo.indirizzo = self.profilo.indirizzo;
-        });
-
-        $dashService.saldo().then(function (result) {
-            self.saldo = result.data;
-            $appFactory.saldo.saldoContabile = self.saldo.contabile;
-            $appFactory.saldo.saldoDisponibile = self.saldo.disponibile;
-            $appFactory.saldo.dataUltimoAccesso = self.saldo.ultimoAccesso;
-        });
-    }
 
     self.cleanToken = function () {
         localStorage.removeItem('tokenJwt');
-        $appFactory.loggato = false;
     };
+
+    self.loggato = $appFactory.loggato;
 
 }]);
 

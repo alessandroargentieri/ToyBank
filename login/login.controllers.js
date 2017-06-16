@@ -1,13 +1,16 @@
-app.controller('LoginCtrl', ['$loginService', '$state', '$scope', '$profiloService', '$profiloFactory', '$dashService', '$appFactory', function ($loginService, $state, $scope, $profiloService, $profiloFactory, $dashService, $appFactory) {
+app.controller('LoginCtrl', ['$loginService', '$state', '$scope', '$profiloService', '$dashService', '$appFactory', '$rootScope', function ($loginService, $state, $scope, $profiloService, $dashService, $appFactory, $rootScope) {
     var self = this;
-    self.profilo = $profiloFactory;
+
+    self.profilo = $appFactory.profilo;
+
     self.login = function (username, password) {
         $loginService.logga(username, password).then(function (result) {
-            console.log(result.data);
             localStorage.setItem('tokenJwt', result.data.token);
-            $profiloFactory = result.data.profilo;
+            $appFactory.profilo = result.data.profilo;
             $appFactory.loggato = true;
+            $rootScope.$broadcast('login');
             $state.go('dashboard');
+            console.log('loggato nel login controller è: ' + $appFactory.loggato);
         }).catch(function (error) {
             console.log('errore nel login: ', error);
         });
