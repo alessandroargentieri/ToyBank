@@ -19,8 +19,12 @@
                 required>
         </div>
         <div class="form-group inner-addon left-addon">
-            <i class="glyphicon glyphicon-calendar"></i>
-            <input ng-model="ctrl.data" type="date" class="form-control" id="data" placeholder="dd/mm/aaaa" name="data" required>
+            <p class="input-group">
+                <input ng-model="ctrl.data" type="text" uib-datepicker-popup="dd/mm/yyyy" is-open="popup1.opened" datapicker-options="dateOptions" close-text="Close" alt-input-formats="altInputFormats" class="form-control" id="data" placeholder="gg/mm/aaaa" name="data" ng-required="true">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" ng-click="ctrl.open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </p>
         </div>
         <div class="form-group">
             <textarea ng-model="ctrl.causale" class="form-control" rows="5" id="causale" placeholder="Inserisci Causale" required></textarea>

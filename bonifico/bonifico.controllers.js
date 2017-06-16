@@ -21,4 +21,12 @@ app.controller('BonificoCtrl', ['$bonificoService', '$state', function ($bonific
         });
     };
 
+    self.popup1={
+        opened:false
+    };
+
+    self.open1=function(){
+        self.popup1.opened=true;
+    }
+
 }]);
