@@ -1,21 +1,29 @@
 var app = angular.module('ToyBank', ['ui.router', 'ngAnimate', 'ngTouch', 'ui.bootstrap']);
 
-app.controller('appCtrl', ['$profiloService', '$profiloFactory', '$saldoFactory', '$dashService', '$appFactory', function ($profiloService, $profiloFactory, $saldoFactory, $dashService, $appFactory) {
+app.controller('appCtrl', ['$profiloService', '$dashService', '$appFactory', function ($profiloService, $dashService, $appFactory) {
 
     var self = this;
-    self.appFactory = $appFactory;
-    self.profilo = $profiloFactory;
+
+    self.profilo = $appFactory.profilo;
+    self.saldo = $appFactory.saldo;
+    self.loggato = $appFactory.loggato;
 
     if (localStorage.getItem('tokenJwt') !== null) {
         $appFactory.loggato = true;
         $profiloService.profilo().then(function (result) {
             self.profilo = result.data;
-            $profiloFactory.nome = self.profilo.nome;
-            $profiloFactory.cognome = self.profilo.cognome;
-            $profiloFactory.dataUltimoAccesso = self.profilo.dataUltimoAccesso;
-            $profiloFactory.codiceFiscale = self.profilo.codiceFiscale;
-            $profiloFactory.indirizzo = self.profilo.indirizzo;
+            $appFactory.profilo.nome = self.profilo.nome;
+            $appFactory.profilo.cognome = self.profilo.cognome;
+            $appFactory.profilo.ultimoAccesso = self.profilo.ultimoAccesso;
+            $appFactory.profilo.codiceFiscale = self.profilo.codiceFiscale;
+            $appFactory.profilo.indirizzo = self.profilo.indirizzo;
+        });
 
+        $dashService.saldo().then(function (result) {
+            self.saldo = result.data;
+            $appFactory.saldo.saldoContabile = self.saldo.contabile;
+            $appFactory.saldo.saldoDisponibile = self.saldo.disponibile;
+            $appFactory.saldo.dataUltimoAccesso = self.saldo.ultimoAccesso;
         });
     }
 
@@ -26,27 +34,21 @@ app.controller('appCtrl', ['$profiloService', '$profiloFactory', '$saldoFactory'
 
 }]);
 
-app.factory('$profiloFactory', function () {
-    return {
-        codiceFiscale: null,
-        cognome: null,
-        dataUltimoAccesso: null,
-        indirizzo: null,
-        nome: null
-    };
-});
-
 app.factory('$appFactory', function () {
     return {
-        loggato : false,
-    };
-});
-
-app.factory('$saldoFactory', function () {
-    return {
-        saldoContabile: null,
-        saldoDisponibile: null,
-        dataUltimoAccesso: null
+        loggato: false,
+        profilo: {
+            codiceFiscale: null,
+            cognome: null,
+            dataUltimoAccesso: null,
+            indirizzo: null,
+            nome: null
+        },
+        saldo: {
+            saldoContabile: null,
+            saldoDisponibile: null,
+            dataUltimoAggiornamento: null
+        }
     };
 });
 
