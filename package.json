@@ -4,7 +4,7 @@
   "description": "Two steps for start to work on the project, execute two commands:\r  1. `bower install`\r  2. `http-server`",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/jshint/bin/jshint hello.js"
+    "test": "./node_modules/jshint/bin/jshint bonifico dashboard login movimenti profilo js"
   },
   "repository": {
     "type": "git",
