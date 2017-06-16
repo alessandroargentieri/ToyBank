@@ -1,6 +1,6 @@
-var app = angular.module('ToyBank', ['ui.router', 'ngAnimate', 'ngTouch', 'ui.bootstrap']);
+var app = angular.module('ToyBank', ['ui.router', 'ngAnimate', 'ngTouch', 'ui.bootstrap', 'mgo-angular-wizard']);
 
-app.controller('appCtrl', ['$rootScope', '$scope', '$appFactory', '$loginService', '$state', function ($rootScope, $scope, $appFactory, $loginService, $state) {
+app.controller('appCtrl', ['$rootScope', '$scope', '$appFactory', '$loginService', '$state', '$uibModal', function ($rootScope, $scope, $appFactory, $loginService, $state, $uibModal) {
     var self = this;
     self.loggato = localStorage.getItem('tokenJwt') !== null ? true : false;
 
@@ -9,14 +9,28 @@ app.controller('appCtrl', ['$rootScope', '$scope', '$appFactory', '$loginService
         $rootScope.$broadcast('logout');
     };
 
-    $scope.$on('login', function (event, arg) { 
+    $scope.$on('login', function (event, arg) {
         self.loggato = true;
-  });
+    });
 
-      $scope.$on('logout', function (event, arg) { 
+    $scope.$on('logout', function (event, arg) {
         self.loggato = false;
-  });
+    });
 
+    $scope.$on('loginError', function (event, arg) {
+        var modalInstance = $uibModal.open({
+            ariaLabelledBy: 'modal-title',
+            ariaDescribedBy: 'modal-body',
+            templateUrl: '../modal/myModalContent.html',
+            controller: 'appCtrl',
+            resolve: {
+                error: function(){
+                    return arg.error;
+                }
+            }
+        });
+        console.log(modalInstance.resolve);
+    });
 }]);
 
 app.factory('$appFactory', function () {
@@ -125,6 +139,7 @@ app.service('loadingInterceptor', function ($q, $log, $rootScope, baseURL) {
             xhrResolutions++;
             updateStatus();
             $log.error('Response error:', rejection);
+            $rootScope.$broadcast('loginError', rejection.data);
             return $q.reject(rejection);
         }
     };
