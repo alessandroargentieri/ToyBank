@@ -38,7 +38,7 @@ app.factory('$profiloFactory', function () {
 
 app.factory('$appFactory', function () {
     return {
-        loggato : false
+        loggato : false,
     };
 });
 
