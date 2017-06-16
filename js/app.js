@@ -22,15 +22,20 @@ app.controller('appCtrl', ['$rootScope', '$scope', '$appFactory', '$loginService
             ariaLabelledBy: 'modal-title',
             ariaDescribedBy: 'modal-body',
             templateUrl: '../modal/myModalContent.html',
-            controller: 'appCtrl',
+            controller: 'modalCtrl',
+            controllerAs: 'ctrl',
             resolve: {
-                error: function(){
+                error: function () {
                     return arg.error;
                 }
             }
         });
-        console.log(modalInstance.resolve);
     });
+}]);
+
+app.controller('modalCtrl', ['$uibModalInstance', 'error', function ($uibModalInstance, error) {
+    var self = this;
+    self.errorMsg = error;
 }]);
 
 app.factory('$appFactory', function () {
