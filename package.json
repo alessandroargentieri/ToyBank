@@ -1,0 +1,22 @@
+{
+  "name": "angularjs-toybank",
+  "version": "1.0.0",
+  "description": "Two steps for start to work on the project, execute two commands:\r  1. `bower install`\r  2. `http-server`",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/jshint/bin/jshint hello.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gfiume/ToyBank.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gfiume/ToyBank/issues"
+  },
+  "homepage": "https://github.com/gfiume/ToyBank#readme",
+  "devDependencies": {
+    "jshint": "^2.9.4"
+  }
+}
