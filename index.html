@@ -4,6 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <title>Toy Bank</title>
+
+    <link href="movimenti/movimenti.css" rel="stylesheet">
+    
     <script src='bower_components/angular/angular.min.js'></script>
     <script src='bower_components/angular-ui-router/release/angular-ui-router.min.js'></script>
     <script src='bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js'></script>
@@ -20,6 +23,8 @@
     <script src="movimenti/movimenti.service.js"></script>
     <script src="bonifico/bonifico.controllers.js"></script>
     <script src="bonifico/bonifico.service.js"></script>
+    <script type="text/javascript" src="bower_components/angular-wizard/dist/angular-wizard.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-wizard/dist/angular-wizard.min.css">
 
     <link rel="stylesheet" type="text/css" href='bower_components/bootstrap/dist/css/bootstrap.min.css' />
     <link rel="stylesheet" type="text/css" href='\bower_components\angular-bootstrap\ui-bootstrap-csp.css' />
@@ -30,8 +35,8 @@
 
 <body ng-app="ToyBank" ng-controller="appCtrl as ctrl">
     <!--da specificare il tema dark/light-->
- 
-    <nav ng-show="ctrl.appFactory.loggato" class="navbar navbar-default">
+
+    <nav ng-show="ctrl.loggato" class="navbar navbar-default">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -63,7 +68,7 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-    
+
     <div class="container">
         <ui-view></ui-view>
     </div>

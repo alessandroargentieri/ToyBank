@@ -1,37 +1,36 @@
-var app = angular.module('ToyBank', ['ui.router', 'ngAnimate', 'ngTouch', 'ui.bootstrap']);
+var app = angular.module('ToyBank', ['ui.router', 'ngAnimate', 'ngTouch', 'ui.bootstrap', 'mgo-angular-wizard']);
 
-app.controller('appCtrl', ['$profiloService', '$dashService', '$appFactory', function ($profiloService, $dashService, $appFactory) {
-
+app.controller('appCtrl', ['$rootScope', '$scope', '$appFactory', '$loginService', '$state', '$uibModal', function ($rootScope, $scope, $appFactory, $loginService, $state, $uibModal) {
     var self = this;
-
-    self.profilo = $appFactory.profilo;
-    self.saldo = $appFactory.saldo;
-    self.loggato = $appFactory.loggato;
-
-    if (localStorage.getItem('tokenJwt') !== null) {
-        $appFactory.loggato = true;
-        $profiloService.profilo().then(function (result) {
-            self.profilo = result.data;
-            $appFactory.profilo.nome = self.profilo.nome;
-            $appFactory.profilo.cognome = self.profilo.cognome;
-            $appFactory.profilo.ultimoAccesso = self.profilo.ultimoAccesso;
-            $appFactory.profilo.codiceFiscale = self.profilo.codiceFiscale;
-            $appFactory.profilo.indirizzo = self.profilo.indirizzo;
-        });
-
-        $dashService.saldo().then(function (result) {
-            self.saldo = result.data;
-            $appFactory.saldo.saldoContabile = self.saldo.contabile;
-            $appFactory.saldo.saldoDisponibile = self.saldo.disponibile;
-            $appFactory.saldo.dataUltimoAccesso = self.saldo.ultimoAccesso;
-        });
-    }
+    self.loggato = localStorage.getItem('tokenJwt') !== null ? true : false;
 
     self.cleanToken = function () {
         localStorage.removeItem('tokenJwt');
-        $appFactory.loggato = false;
+        $rootScope.$broadcast('logout');
     };
 
+    $scope.$on('login', function (event, arg) {
+        self.loggato = true;
+    });
+
+    $scope.$on('logout', function (event, arg) {
+        self.loggato = false;
+    });
+
+    $scope.$on('loginError', function (event, arg) {
+        var modalInstance = $uibModal.open({
+            ariaLabelledBy: 'modal-title',
+            ariaDescribedBy: 'modal-body',
+            templateUrl: '../modal/myModalContent.html',
+            controller: 'appCtrl',
+            resolve: {
+                error: function(){
+                    return arg.error;
+                }
+            }
+        });
+        console.log(modalInstance.resolve);
+    });
 }]);
 
 app.factory('$appFactory', function () {
@@ -140,6 +139,7 @@ app.service('loadingInterceptor', function ($q, $log, $rootScope, baseURL) {
             xhrResolutions++;
             updateStatus();
             $log.error('Response error:', rejection);
+            $rootScope.$broadcast('loginError', rejection.data);
             return $q.reject(rejection);
         }
     };
