@@ -1,4 +1,4 @@
-app.controller('ProfiloCtrl', ['$profiloFactory', '$profiloService', function ($profiloFactory, $profiloService) {
+app.controller('ProfiloCtrl', ['$profiloService', '$appFactory', function ($profiloService, $appFactory) {
     var self = this;
 
     self.getProfilo = function () {
@@ -10,7 +10,5 @@ app.controller('ProfiloCtrl', ['$profiloFactory', '$profiloService', function ($
             $appFactory.profilo.codiceFiscale = self.profilo.codiceFiscale;
             $appFactory.profilo.indirizzo = self.profilo.indirizzo;
         });
-    };
-
-    self.profiloData();
+    }();
 }]);

@@ -1,18 +1,22 @@
-app.controller('LoginCtrl', ['$loginService', '$state', '$scope', '$profiloService', '$dashService', '$appFactory', '$rootScope', function ($loginService, $state, $scope, $profiloService, $dashService, $appFactory, $rootScope) {
-    var self = this;
+app.controller('LoginCtrl', ['$loginService', '$profiloService', '$appFactory', '$state', '$scope', '$rootScope',
+    function ($loginService, $profiloService, $appFactory, $state, $scope, $rootScope) {
 
-    self.profilo = $appFactory.profilo;
+        var self = this;
+        self.profilo = $appFactory.profilo;
+        self.loggato = $appFactory.loggato;
 
-    self.login = function (username, password) {
-        $loginService.logga(username, password).then(function (result) {
-            localStorage.setItem('tokenJwt', result.data.token);
-            $appFactory.profilo = result.data.profilo;
-            $appFactory.loggato = true;
-            $rootScope.$broadcast('login');
-            $state.go('dashboard');
-            console.log('loggato nel login controller è: ' + $appFactory.loggato);
-        }).catch(function (error) {
-            console.log('errore nel login: ', error);
-        });
-    };
-}]);
+        self.login = function (username, password) {
+            $loginService.logga(username, password).then(function (result) {
+                localStorage.setItem('tokenJwt', result.data.token);
+                $appFactory.loggato = true;
+                $profiloService.profilo().then(function (result) {
+                    $appFactory.profilo = result.data;
+                });
+                $rootScope.$broadcast('login');
+                $state.go('dashboard');
+            }).catch(function (error) {
+                console.log('errore nel login: ', error);
+            });
+        };
+
+    }]);

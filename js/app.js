@@ -1,13 +1,21 @@
 var app = angular.module('ToyBank', ['ui.router', 'ngAnimate', 'ngTouch', 'ui.bootstrap']);
 
-app.controller('appCtrl', ['$rootScope', '$scope', '$appFactory', function ($rootScope, $scope, $appFactory) {
+app.controller('appCtrl', ['$rootScope', '$scope', '$appFactory', '$loginService', '$state', function ($rootScope, $scope, $appFactory, $loginService, $state) {
     var self = this;
+    self.loggato = localStorage.getItem('tokenJwt') !== null ? true : false;
 
     self.cleanToken = function () {
         localStorage.removeItem('tokenJwt');
+        $rootScope.$broadcast('logout');
     };
 
-    self.loggato = $appFactory.loggato;
+    $scope.$on('login', function (event, arg) { 
+        self.loggato = true;
+  });
+
+      $scope.$on('logout', function (event, arg) { 
+        self.loggato = false;
+  });
 
 }]);
 
