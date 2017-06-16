@@ -10,13 +10,13 @@
                 <thead>
                     <tr>
                         <th><a href="javascript:void(0)" ng-click="ctrl.sortBy('id')"> ID</a>
-                        <span class="sortorder" ng-class="{reverse:reverse"}></span></th>
+                        <span class="sortorder" ng-class="{reverse:ctrl.reverse}" ng-show="ctrl.CampoOrdinamento==='id'"></span></th>
                         <th><a href="javascript:void(0)" ng-click="ctrl.sortBy('data')">Data</a>
-                        <span class="sortorder" ng-class="{reverse:reverse"}></span></th>
+                        <span class="sortorder" ng-class="{reverse:ctrl.reverse}" ng-show="ctrl.CampoOrdinamento==='data'"></span></th>
                         <th><a href="javascript:void(0)" ng-click="ctrl.sortBy('descrizione')">Descrizione</a>
-                        <span class="sortorder" ng-class="{reverse:reverse"}></span></th>
+                        <span class="sortorder" ng-class="{reverse:ctrl.reverse}" ng-show="ctrl.CampoOrdinamento==='descrizione'"></span></th>
                         <th><a href="javascript:void(0)" ng-click="ctrl.sortBy('importo')">Importo</a>
-                        <span class="sortorder" ng-class="{reverse:reverse"}></span></th>
+                        <span class="sortorder" ng-class="{reverse:ctrl.reverse}"  ng-show="ctrl.CampoOrdinamento==='importo'"></span></th>
                     </tr>
                 </thead>
                 <tbody>
