@@ -1,6 +1,6 @@
 <div>
 
-        <div>{{ctrl.bonifico.ibanRicevente}}</div>7
+        <div>{{ctrl.bonifico.ibanRicevente}}</div>
         <div>{{ctrl.bonifico.nome}}</div>
         <div>{{ctrl.bonifico.cognome}}</div>
         <div>{{ctrl.bonifico.importo | currency}}</div>
@@ -9,9 +9,12 @@
 
         <input ng-model="ctrl.otp" type="text" class="form-control" id="otp" placeholder="Inserisci OTP" name="otp" required>
 
+        <div>
+                <button ui-sref="bonifico.step1" id="avanti" type="submit" class="btn btn-default">Indietro</button>
 
-        <button ng-click="ctrl.confermaBonificoCtrl()" id="avanti" type="submit" class="btn btn-default">Avanti</button>
+                <button ng-click="ctrl.confermaBonificoCtrl()" id="avanti" type="submit" class="btn btn-default">Avanti</button>
+        </div>
 
-        <button ui-sref="bonifico.step1" id="avanti" type="submit" class="btn btn-default">Indietro</button>
+
 
 </div>
