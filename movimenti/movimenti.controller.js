@@ -1,14 +1,16 @@
-app.controller('MovimentiCtrl', ['$dashService', '$saldoFactory','$movimentiService', function ($dashService, $saldoFactory, $movimentiService) {
+app.controller('MovimentiCtrl', ['$dashService', '$movimentiService', function ($dashService, $movimentiService) {
     var self = this;
 
-    self.saldo = $saldoFactory;    
-    self.movimenti=null;
-
-    self.getMovimenti=function(){
-        $movimentiService.$movimenti().then(function(result){
-            self.movimenti=result.data.movimenti;
-            console.log(self.movimenti);
+    self.getSaldo = function () {
+        $dashService.saldo().then(function (result) {
+            self.saldo = result.data;
         });
     }();
-    
+
+    self.getMovimenti = function () {
+        $movimentiService.$movimenti().then(function (result) {
+            self.movimenti = result.data.movimenti;
+        });
+    }();
+
 }]);

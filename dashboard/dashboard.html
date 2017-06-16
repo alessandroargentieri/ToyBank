@@ -4,10 +4,10 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="alert alert-info">
-                        <strong>Saldo contabile: </strong> {{ctrl.saldoResponse.saldoContabile}}<br />
+                        <strong>Saldo contabile: </strong> {{ctrl.saldo.saldoContabile}}<br />
                     </div>
                     <div class="alert alert-info">
-                        <strong>Saldo disponibile: </strong> {{ctrl.saldoResponse.saldoDisponibile}}
+                        <strong>Saldo disponibile: </strong> {{ctrl.saldo.saldoDisponibile}}
                     </div>
                 </div>
             </div>
@@ -15,7 +15,7 @@
         <div class="col-md-6 col-xs-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <strong>Ultimo accesso: </strong> {{ctrl.saldoResponse.dataUltimoAggiornamento | date: 'medium'}}<br />
+                    <strong>Ultimo accesso: </strong> {{ctrl.saldo.dataUltimoAggiornamento | date: 'medium'}}<br />
                     Benvenuto {{ctrl.profilo.nome}} {{ctrl.profilo.cognome}}
                 </div>
             </div>
