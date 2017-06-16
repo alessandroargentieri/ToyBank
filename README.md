@@ -1,5 +1,5 @@
 # ToyBank
-[![Build Status](https://travis-ci.org/gfiume/ToyBank)](https://travis-ci.org/gfiume/ToyBank)
+[![Build Status](https://travis-ci.org/gfiume/ToyBank.svg)](https://travis-ci.org/gfiume/ToyBank)
 
 
 ## How to work
