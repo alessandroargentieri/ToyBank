@@ -1,4 +1,4 @@
-app.controller('ProfiloCtrl', ['$profiloService', function ($profiloService) {
+app.controller('ProfiloCtrl', ['$profiloService', '$appFactory', function ($profiloService, $appFactory) {
     var self = this;
 
     self.getProfilo = function () {
