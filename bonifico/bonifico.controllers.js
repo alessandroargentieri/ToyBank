@@ -33,7 +33,7 @@ app.controller('BonificoCtrl', ['$bonificoService', '$state', 'WizardHandler', f
         self.cognome = "";
         self.iban = "";
         self.importo = "";
-        self.data = "";
+        self.data = new Date();
         self.causale = "";
     }
     
