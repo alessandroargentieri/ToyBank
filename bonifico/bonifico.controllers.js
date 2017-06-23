@@ -35,7 +35,7 @@ app.controller('BonificoCtrl', ['$bonificoService', '$state', 'WizardHandler', f
         self.importo = "";
         self.data = new Date();
         self.causale = "";
-    }
+    };
     
     self.data=new Date();
 
