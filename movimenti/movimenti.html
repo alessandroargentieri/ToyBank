@@ -1,7 +1,7 @@
 <div ng-controller="MovimentiCtrl as ctrl">
     <div class="row">
         <div class="col-md-2 col-md-offset-10 col-xs-6 col-xs-offset-6">
-             SaldoContabile: <strong>{{ctrl.saldo.saldoContabile}}</strong>  
+             SaldoContabile: <strong>{{ctrl.saldo.saldoContabile || currency}}</strong>  
         </div>
     </div>
     <div class="row">
