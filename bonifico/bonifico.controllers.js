@@ -23,8 +23,8 @@ app.controller('BonificoCtrl', ['$bonificoService', '$state', 'WizardHandler', f
             console.log('errore nella verifica del bonifico', error);
         });
     };
-
-    self.changeLabelAndGoNext = function () {
+  
+  self.changeLabelAndGoNext = function () {
         WizardHandler.wizard().next();
     };
 
@@ -35,4 +35,32 @@ app.controller('BonificoCtrl', ['$bonificoService', '$state', 'WizardHandler', f
         self.importo = "";
         self.data = "";
         self.causale = "";
-    }}]);
+    }
+    
+    self.data=new Date();
+
+    while(self.data.getDay()===0 || self.data.getDay()===6){
+        self.data.setDate(self.data.getDate()+1);
+    }
+
+    self.dateOptions={
+        dateDisabled: disabled,
+        minDate:new Date(),
+        startingDay: 1
+    };
+
+    function disabled(data) {
+    var date = data.date,
+      mode = data.mode;
+    return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+  }
+
+    self.calendar={
+        opened:false
+    };
+
+    self.openCalendar=function(){
+        self.calendar.opened=true;
+    };
+
+}]);
