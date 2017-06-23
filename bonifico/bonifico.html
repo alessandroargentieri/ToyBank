@@ -1,6 +1,11 @@
 <div ng-controller="BonificoCtrl as ctrl">
 
 <!--qui c'è la roba comune delle pagine bonifico-->
+<wizard on-finish="finishedWizard()" on-cancel="cancelledWizard()"> 
+    <wz-step wz-title="Step1"></wz-step>
+    <wz-step wz-title="Step2"></wz-step>
+    <wz-step wz-title="Step3"></wz-step>
+</wizard>
 <div ui-view></div>
 
 </div>
