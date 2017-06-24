@@ -21,12 +21,30 @@ app.controller('BonificoCtrl', ['$bonificoService', '$state', function ($bonific
         });
     };
 
-    self.popup1={
+    self.data=new Date();
+
+    while(self.data.getDay()===0 || self.data.getDay()===6){
+        self.data.setDate(self.data.getDate()+1);
+    }
+
+    self.dateOptions={
+        dateDisabled: disabled,
+        minDate:new Date(),
+        startingDay: 1
+    };
+
+    function disabled(data) {
+    var date = data.date,
+      mode = data.mode;
+    return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+  }
+
+    self.calendar={
         opened:false
     };
 
-    self.open1=function(){
-        self.popup1.opened=true;
-    }
+    self.openCalendar=function(){
+        self.calendar.opened=true;
+    };
 
 }]);
